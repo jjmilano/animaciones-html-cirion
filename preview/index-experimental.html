@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cirion Animated Heroes Experimental</title>
+    <link rel="stylesheet" href="../snippets/cirion-hero-experimental.css" />
+    <script>
+      document.documentElement.dataset.cirionForceMotion = "true";
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(21, 32, 62, 0.54), transparent 40%),
+          linear-gradient(180deg, #050814 0%, #070c18 50%, #03050c 100%);
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .preview-shell {
+        width: min(100% - 2rem, 128rem);
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      .preview-stack {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .preview-topbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .preview-copy {
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .preview-title {
+        margin: 0;
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+
+      .preview-note {
+        margin: 0;
+        max-width: 42rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .preview-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .preview-toggle {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(63, 102, 255, 0.92), rgba(233, 34, 181, 0.92));
+        color: white;
+        padding: 0.85rem 1.1rem;
+        font: inherit;
+        font-size: 0.92rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 12px 28px rgba(22, 33, 76, 0.34);
+      }
+
+      .preview-status {
+        font-size: 0.84rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.58);
+      }
+
+      .preview-card {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .speed-toolkit {
+        display: grid;
+        gap: 0.55rem;
+        min-width: min(100%, 22rem);
+        padding: 0.9rem 1rem;
+        border-radius: 1rem;
+        background: rgba(12, 18, 37, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        box-shadow: 0 14px 30px rgba(3, 7, 20, 0.22);
+      }
+
+      .speed-toolkit__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .speed-toolkit__title {
+        margin: 0;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .speed-toolkit__reset {
+        appearance: none;
+        border: 0;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        padding: 0.4rem 0.75rem;
+        font: inherit;
+        font-size: 0.76rem;
+        cursor: pointer;
+      }
+
+      .speed-toolkit__row {
+        display: grid;
+        grid-template-columns: 7.2rem 1fr auto;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .speed-toolkit__label {
+        font-size: 0.84rem;
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .speed-toolkit__slider {
+        width: 100%;
+      }
+
+      .speed-toolkit__value {
+        min-width: 3.2rem;
+        text-align: right;
+        font-size: 0.84rem;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .preview-label {
+        margin: 0;
+        font-size: 0.82rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.64);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="preview-shell">
+      <div class="preview-topbar">
+        <div class="preview-copy">
+          <h1 class="preview-title">Cirion animated heroes</h1>
+          <p class="preview-note">
+            Esta preview fuerza animación para pruebas locales. Si querés comprobar el fallback accesible, podés alternar el modo reducido con el botón.
+          </p>
+        </div>
+
+        <div class="preview-actions">
+          <div class="speed-toolkit" data-cirion-speed-toolkit>
+            <div class="speed-toolkit__header">
+              <p class="speed-toolkit__title">Speed toolkit</p>
+              <button class="speed-toolkit__reset" type="button" data-speed-reset>
+                Reset
+              </button>
+            </div>
+
+            <label class="speed-toolkit__row">
+              <span class="speed-toolkit__label">Base speed</span>
+              <input
+                class="speed-toolkit__slider"
+                data-speed-control="base"
+                type="range"
+                min="0.2"
+                max="1"
+                step="0.05"
+                value="0.55"
+              />
+              <span class="speed-toolkit__value" data-speed-output="base">0.55x</span>
+            </label>
+
+            <label class="speed-toolkit__row">
+              <span class="speed-toolkit__label">Hover speed</span>
+              <input
+                class="speed-toolkit__slider"
+                data-speed-control="hover"
+                type="range"
+                min="0.4"
+                max="1.4"
+                step="0.05"
+                value="1"
+              />
+              <span class="speed-toolkit__value" data-speed-output="hover">1.00x</span>
+            </label>
+
+            <label class="speed-toolkit__row">
+              <span class="speed-toolkit__label">Cursor follow</span>
+              <input
+                class="speed-toolkit__slider"
+                data-speed-control="cursor"
+                type="range"
+                min="0.002"
+                max="0.012"
+                step="0.0005"
+                value="0.005"
+              />
+              <span class="speed-toolkit__value" data-speed-output="cursor">0.005</span>
+            </label>
+          </div>
+
+          <button class="preview-toggle" type="button" data-preview-toggle>
+            Usar fallback estático
+          </button>
+          <span class="preview-status" data-preview-status>Motion forzado</span>
+        </div>
+      </div>
+
+      <div class="preview-stack">
+        <section class="preview-card" aria-label="Connectivity preview">
+          <p class="preview-label">Connectivity</p>
+          <div
+            class="cirion-hero cirion-hero--connectivity"
+            data-cirion-hero
+            data-base-speed="0.55"
+            data-hover-speed="1"
+            data-cursor-sensitivity="0.005"
+            style="
+              --video-pos-desktop: 72% 48%;
+              --video-pos-tablet: 78% 48%;
+              --video-pos-mobile: 79% 48%;
+            "
+          >
+            <div class="cirion-hero__surface">
+              <div class="cirion-hero__poster-shell" aria-hidden="true">
+                <img
+                  class="cirion-hero__poster"
+                  src="../assets/optimized/connectivity/poster.webp"
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+
+              <video
+                class="cirion-hero__video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="../assets/optimized/connectivity/poster.webp"
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <source src="../assets/optimized/connectivity/video.webm" type="video/webm" />
+                <source src="../assets/optimized/connectivity/video.mp4" type="video/mp4" />
+              </video>
+
+              <div class="cirion-hero__veil" aria-hidden="true"></div>
+              <div class="cirion-hero__mesh" aria-hidden="true"></div>
+              <div class="cirion-hero__glow" aria-hidden="true"></div>
+              <div class="cirion-hero__safe-zone" aria-hidden="true"></div>
+              <div class="cirion-hero__content" hidden aria-hidden="true"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="preview-card" aria-label="Data preview">
+          <p class="preview-label">Data</p>
+          <div
+            class="cirion-hero cirion-hero--data"
+            data-cirion-hero
+            data-base-speed="0.55"
+            data-hover-speed="1"
+            data-cursor-sensitivity="0.005"
+            style="
+              --video-pos-desktop: 56% 50%;
+              --video-pos-tablet: 60% 50%;
+              --video-pos-mobile: 68% 50%;
+            "
+          >
+            <div class="cirion-hero__surface">
+              <div class="cirion-hero__poster-shell" aria-hidden="true">
+                <img
+                  class="cirion-hero__poster"
+                  src="../assets/optimized/data/poster.webp"
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+
+              <video
+                class="cirion-hero__video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="../assets/optimized/data/poster.webp"
+                aria-hidden="true"
+                tabindex="-1"
+              >
+                <source src="../assets/optimized/data/video.webm" type="video/webm" />
+                <source src="../assets/optimized/data/video.mp4" type="video/mp4" />
+              </video>
+
+              <div class="cirion-hero__veil" aria-hidden="true"></div>
+              <div class="cirion-hero__mesh" aria-hidden="true"></div>
+              <div class="cirion-hero__glow" aria-hidden="true"></div>
+              <div class="cirion-hero__safe-zone" aria-hidden="true"></div>
+              <div class="cirion-hero__content" hidden aria-hidden="true"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="../snippets/cirion-hero-experimental.js"></script>
+    <script>
+      (function () {
+        const button = document.querySelector("[data-preview-toggle]");
+        const status = document.querySelector("[data-preview-status]");
+
+        if (!button || !status) {
+          return;
+        }
+
+        function renderPreviewState() {
+          const forced = document.documentElement.dataset.cirionForceMotion === "true";
+          button.textContent = forced ? "Usar fallback estático" : "Forzar animación";
+          status.textContent = forced ? "Motion forzado" : "Fallback accesible";
+        }
+
+        button.addEventListener("click", () => {
+          const forced = document.documentElement.dataset.cirionForceMotion === "true";
+          document.documentElement.dataset.cirionForceMotion = forced ? "false" : "true";
+          window.dispatchEvent(new CustomEvent("cirion:motion-override"));
+          renderPreviewState();
+        });
+
+        renderPreviewState();
+      })();
+    </script>
+  </body>
+</html>

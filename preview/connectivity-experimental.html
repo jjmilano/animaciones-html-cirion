@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cirion Hero Connectivity Experimental</title>
+    <link rel="stylesheet" href="../snippets/cirion-hero-experimental.css" />
+    <script>
+      document.documentElement.dataset.cirionForceMotion = "true";
+    </script>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(180deg, #071022 0%, #081127 55%, #060b17 100%);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .page-shell {
+        width: min(100%, 128rem);
+        margin: 0 auto;
+        padding: 4.5rem 2rem;
+      }
+
+      .speed-toolkit {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 20;
+        display: grid;
+        gap: 0.55rem;
+        width: min(22rem, calc(100vw - 2rem));
+        padding: 0.95rem 1rem;
+        border-radius: 1rem;
+        background: rgba(8, 15, 31, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 18px 38px rgba(4, 8, 20, 0.34);
+        color: white;
+      }
+
+      .speed-toolkit__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .speed-toolkit__title {
+        margin: 0;
+        font-size: 0.76rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .speed-toolkit__reset {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        padding: 0.42rem 0.78rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font: inherit;
+        font-size: 0.76rem;
+        cursor: pointer;
+      }
+
+      .speed-toolkit__row {
+        display: grid;
+        grid-template-columns: 6.8rem 1fr auto;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .speed-toolkit__label,
+      .speed-toolkit__value {
+        font-size: 0.84rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <div
+        class="cirion-hero cirion-hero--connectivity"
+        data-cirion-hero
+        data-base-speed="0.55"
+        data-hover-speed="1"
+        data-cursor-sensitivity="0.005"
+        style="
+          --video-pos-desktop: 72% 48%;
+          --video-pos-tablet: 78% 48%;
+          --video-pos-mobile: 79% 48%;
+        "
+      >
+        <div class="cirion-hero__surface">
+          <div class="cirion-hero__poster-shell" aria-hidden="true">
+            <img
+              class="cirion-hero__poster"
+              src="../assets/optimized/connectivity/poster.webp"
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+
+          <video
+            class="cirion-hero__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="../assets/optimized/connectivity/poster.webp"
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            <source src="../assets/optimized/connectivity/video.webm" type="video/webm" />
+            <source src="../assets/optimized/connectivity/video.mp4" type="video/mp4" />
+          </video>
+
+          <div class="cirion-hero__veil" aria-hidden="true"></div>
+          <div class="cirion-hero__mesh" aria-hidden="true"></div>
+          <div class="cirion-hero__glow" aria-hidden="true"></div>
+          <div class="cirion-hero__safe-zone" aria-hidden="true"></div>
+          <div class="cirion-hero__content" hidden aria-hidden="true"></div>
+        </div>
+      </div>
+    </main>
+
+    <div class="speed-toolkit" data-cirion-speed-toolkit>
+      <div class="speed-toolkit__header">
+        <p class="speed-toolkit__title">Speed toolkit</p>
+        <button class="speed-toolkit__reset" type="button" data-speed-reset>Reset</button>
+      </div>
+
+      <label class="speed-toolkit__row">
+        <span class="speed-toolkit__label">Base speed</span>
+        <input data-speed-control="base" type="range" min="0.2" max="1" step="0.05" value="0.55" />
+        <span class="speed-toolkit__value" data-speed-output="base">0.55x</span>
+      </label>
+
+      <label class="speed-toolkit__row">
+        <span class="speed-toolkit__label">Hover speed</span>
+        <input data-speed-control="hover" type="range" min="0.4" max="1.4" step="0.05" value="1" />
+        <span class="speed-toolkit__value" data-speed-output="hover">1.00x</span>
+      </label>
+
+      <label class="speed-toolkit__row">
+        <span class="speed-toolkit__label">Cursor follow</span>
+        <input data-speed-control="cursor" type="range" min="0.002" max="0.012" step="0.0005" value="0.005" />
+        <span class="speed-toolkit__value" data-speed-output="cursor">0.005</span>
+      </label>
+    </div>
+
+    <script src="../snippets/cirion-hero-experimental.js"></script>
+  </body>
+</html>

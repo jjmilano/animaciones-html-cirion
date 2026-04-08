@@ -1,0 +1,260 @@
+.cirion-hero {
+  --hero-bg: oklch(0.13 0.022 275);
+  --surface-top: color-mix(in oklab, var(--hero-bg) 84%, white 8%);
+  --surface-bottom: color-mix(in oklab, var(--hero-bg) 88%, black 12%);
+  --accent-a: oklch(0.73 0.15 248);
+  --accent-b: oklch(0.7 0.24 337);
+  --accent-c: oklch(0.55 0.13 18);
+  --video-pos-desktop: 50% 50%;
+  --video-pos-tablet: var(--video-pos-desktop);
+  --video-pos-mobile: var(--video-pos-tablet);
+  --safe-zone-overlay: linear-gradient(
+    90deg,
+    rgba(3, 8, 20, 0.38) 0,
+    rgba(3, 8, 20, 0.18) 20%,
+    rgba(3, 8, 20, 0.06) 38%,
+    transparent 100%
+  );
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: min(100%, 96rem);
+  aspect-ratio: 64 / 21;
+  margin: 0 auto;
+  container-type: inline-size;
+  isolation: isolate;
+}
+
+.cirion-hero *,
+.cirion-hero *::before,
+.cirion-hero *::after {
+  box-sizing: border-box;
+}
+
+.cirion-hero__surface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: clamp(0.75rem, 1.8vw, 1.15rem);
+  background:
+    radial-gradient(circle at 18% 18%, color-mix(in oklab, var(--accent-a) 14%, transparent) 0, transparent 36%),
+    radial-gradient(circle at 82% 22%, color-mix(in oklab, var(--accent-b) 12%, transparent) 0, transparent 34%),
+    linear-gradient(180deg, var(--surface-top), var(--surface-bottom));
+  box-shadow:
+    0 16px 44px rgba(4, 7, 18, 0.18),
+    inset 0 -18px 48px rgba(5, 7, 16, 0.28);
+}
+
+.cirion-hero__surface::before,
+.cirion-hero__surface::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.cirion-hero__surface::before {
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 7;
+}
+
+.cirion-hero__surface::after {
+  inset: auto 0 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, transparent 0, rgba(5, 8, 18, 0.28) 44%, rgba(5, 8, 18, 0.8) 100%);
+  z-index: 4;
+}
+
+.cirion-hero__poster-shell,
+.cirion-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cirion-hero__poster,
+.cirion-hero__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--video-pos-desktop);
+}
+
+.cirion-hero__poster-shell {
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cirion-hero__poster {
+  filter: saturate(1.04) contrast(1.04);
+  transform: scale(1.015);
+}
+
+.cirion-hero__video {
+  z-index: 2;
+  opacity: 0;
+  transform: scale(1.035);
+  transition:
+    opacity 720ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.cirion-hero.is-ready .cirion-hero__video {
+  opacity: 1;
+  transform: scale(1.012);
+}
+
+.cirion-hero.is-ready .cirion-hero__poster-shell {
+  opacity: 0;
+}
+
+.cirion-hero__veil,
+.cirion-hero__mesh,
+.cirion-hero__glow,
+.cirion-hero__safe-zone {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cirion-hero__veil {
+  z-index: 3;
+  background:
+    linear-gradient(105deg, rgba(3, 9, 22, 0.18) 0, transparent 28%),
+    radial-gradient(circle at 84% 22%, color-mix(in oklab, var(--accent-b) 20%, transparent) 0, transparent 28%),
+    linear-gradient(180deg, rgba(5, 10, 24, 0.1) 0, rgba(5, 10, 24, 0.34) 100%);
+  mix-blend-mode: screen;
+}
+
+.cirion-hero__mesh {
+  z-index: 5;
+  opacity: 0.16;
+  background:
+    linear-gradient(125deg, transparent 0 22%, rgba(255, 255, 255, 0.022) 36%, transparent 50%),
+    repeating-linear-gradient(
+      114deg,
+      transparent 0 18px,
+      rgba(255, 255, 255, 0.022) 18px 19px,
+      transparent 19px 38px
+    );
+  mask-image: linear-gradient(118deg, transparent 0, rgba(0, 0, 0, 0.68) 18%, black 100%);
+}
+
+.cirion-hero__glow {
+  z-index: 6;
+  background:
+    radial-gradient(circle at 76% 22%, color-mix(in oklab, var(--accent-b) 24%, transparent) 0, transparent 26%),
+    radial-gradient(circle at 24% 84%, color-mix(in oklab, var(--accent-a) 18%, transparent) 0, transparent 30%);
+  opacity: 0.92;
+}
+
+.cirion-hero__safe-zone {
+  z-index: 6;
+  background: var(--safe-zone-overlay);
+}
+
+.cirion-hero__content {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 8;
+  width: min(38%, 19rem);
+  padding: clamp(1.5rem, 5cqi, 2rem);
+  display: grid;
+  align-content: end;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cirion-hero--connectivity {
+  --hero-bg: oklch(0.12 0.024 272);
+  --accent-a: oklch(0.72 0.16 248);
+  --accent-b: oklch(0.72 0.26 338);
+  --accent-c: oklch(0.54 0.15 18);
+  --safe-zone-overlay: linear-gradient(
+    90deg,
+    rgba(4, 9, 22, 0.42) 0,
+    rgba(4, 9, 22, 0.18) 22%,
+    rgba(4, 9, 22, 0.05) 38%,
+    transparent 100%
+  );
+}
+
+.cirion-hero--data {
+  --hero-bg: oklch(0.11 0.02 262);
+  --accent-a: oklch(0.83 0.11 230);
+  --accent-b: oklch(0.73 0.28 339);
+  --accent-c: oklch(0.64 0.11 270);
+  --safe-zone-overlay: linear-gradient(
+    90deg,
+    rgba(4, 8, 22, 0.34) 0,
+    rgba(4, 8, 22, 0.16) 18%,
+    rgba(4, 8, 22, 0.05) 34%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 1024px) {
+  .cirion-hero {
+    aspect-ratio: 16 / 7;
+  }
+
+  .cirion-hero__poster,
+  .cirion-hero__video {
+    object-position: var(--video-pos-tablet);
+  }
+}
+
+@media (max-width: 767px) {
+  .cirion-hero {
+    width: min(100%, 25rem);
+    aspect-ratio: 1 / 1;
+  }
+
+  .cirion-hero__surface {
+    border-radius: 1rem;
+  }
+
+  .cirion-hero__poster,
+  .cirion-hero__video {
+    object-position: var(--video-pos-mobile);
+  }
+
+  .cirion-hero__mesh {
+    opacity: 0.18;
+  }
+}
+
+@container (max-width: 36rem) {
+  .cirion-hero__safe-zone {
+    opacity: 0.64;
+  }
+
+  .cirion-hero__surface::after {
+    height: 46%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cirion-hero__video {
+    display: none;
+  }
+
+  .cirion-hero__poster-shell {
+    opacity: 1 !important;
+  }
+}
+
+html[data-cirion-force-motion="true"] .cirion-hero__video {
+  display: block !important;
+}
+
+html[data-cirion-force-motion="true"] .cirion-hero.is-ready .cirion-hero__poster-shell {
+  opacity: 0 !important;
+}
