@@ -72,6 +72,21 @@ La preview fuerza animación por defecto para que puedas ver el comportamiento c
 - Preview experimental:
   - `http://127.0.0.1:8000/preview/index-experimental.html`
 
+## Deploy en Vercel (evitar `NOT_FOUND`)
+Este repo no tiene `index.html` en la raíz: la entrada real vive en `preview/index.html`.
+Para que Vercel no devuelva `404: NOT_FOUND` en `/`, se incluye `vercel.json` con rewrites hacia las páginas de `preview/`.
+
+Rutas útiles luego del deploy:
+
+```text
+/                       -> /preview/index.html
+/data                   -> /preview/data.html
+/connectivity           -> /preview/connectivity.html
+/experimental           -> /preview/index-experimental.html
+/data-experimental      -> /preview/data-experimental.html
+/connectivity-experimental -> /preview/connectivity-experimental.html
+```
+
 ## Regenerar assets
 Si querés volver a generar posters y videos optimizados desde los MP4 originales:
 
