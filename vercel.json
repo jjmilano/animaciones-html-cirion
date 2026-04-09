@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/preview/index.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/preview/index.html"
+    },
+    {
+      "source": "/data",
+      "destination": "/preview/data.html"
+    },
+    {
+      "source": "/connectivity",
+      "destination": "/preview/connectivity.html"
+    },
+    {
+      "source": "/experimental",
+      "destination": "/preview/index-experimental.html"
+    },
+    {
+      "source": "/data-experimental",
+      "destination": "/preview/data-experimental.html"
+    },
+    {
+      "source": "/connectivity-experimental",
+      "destination": "/preview/connectivity-experimental.html"
+    }
+  ]
+}
