@@ -93,3 +93,32 @@ Si querés volver a generar posters y videos optimizados desde los MP4 originale
 ```powershell
 python .\scripts\build_assets.py
 ```
+
+## Entrega a IT (WordPress / landings)
+Para armar un paquete único, versionado y listo para instalación por IT:
+
+```bash
+python scripts/package_handoff.py --version v1.0.0
+```
+
+Si estás en Windows y no tenés Python instalado/configurado, podés usar PowerShell:
+
+```powershell
+.\scripts\package_handoff.ps1 -Version v1.0.0
+```
+
+O doble click / cmd:
+
+```bat
+scripts\package_handoff.bat -Version v1.0.0
+```
+
+Esto genera en `dist/`:
+
+- carpeta con todos los archivos necesarios,
+- ZIP para compartir,
+- `CHECKSUMS.sha256` para validar integridad.
+
+Guía detallada para instalación (paso a paso, checklist y rollback):
+
+- `docs/WORDPRESS_IT_HANDOFF.md`
