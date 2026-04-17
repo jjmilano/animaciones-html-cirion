@@ -151,6 +151,20 @@ Desde la raíz del repo:
 python scripts/package_handoff.py
 ```
 
+Si Windows no reconoce `python`, usar:
+
+```powershell
+.\scripts\package_handoff.ps1 -Version v1.0.0
+```
+
+o:
+
+```bat
+scripts\package_handoff.bat -Version v1.0.0
+```
+
+Si aparece el error `no se encontró Python`, no es un problema del proyecto; significa que Python no está instalado o no está en PATH.
+
 Salida esperada:
 
 - carpeta en `dist/`
@@ -166,4 +180,3 @@ Plantilla breve:
 - **Incluye:** assets + snippets + guía + checksums
 - **Instrucción clave:** instalar assets globales una sola vez y usar snippets por landing.
 - **Validación:** QA en desktop + iOS + Android antes de publicar.
-

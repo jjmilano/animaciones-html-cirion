@@ -101,6 +101,18 @@ Para armar un paquete único, versionado y listo para instalación por IT:
 python scripts/package_handoff.py --version v1.0.0
 ```
 
+Si estás en Windows y no tenés Python instalado/configurado, podés usar PowerShell:
+
+```powershell
+.\scripts\package_handoff.ps1 -Version v1.0.0
+```
+
+O doble click / cmd:
+
+```bat
+scripts\package_handoff.bat -Version v1.0.0
+```
+
 Esto genera en `dist/`:
 
 - carpeta con todos los archivos necesarios,
