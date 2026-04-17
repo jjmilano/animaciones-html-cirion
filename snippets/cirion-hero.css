@@ -2,6 +2,13 @@
   --hero-bg: oklch(0.13 0.022 275);
   --surface-top: color-mix(in oklab, var(--hero-bg) 84%, white 8%);
   --surface-bottom: color-mix(in oklab, var(--hero-bg) 88%, black 12%);
+  --hero-top-filter: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 0,
+    rgba(0, 0, 0, 0.56) 30%,
+    rgba(0, 0, 0, 0.28) 56%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
   --accent-a: oklch(0.73 0.15 248);
   --accent-b: oklch(0.7 0.24 337);
   --accent-c: oklch(0.55 0.13 18);
@@ -127,10 +134,10 @@
 .cirion-hero__veil {
   z-index: 3;
   background:
-    linear-gradient(105deg, rgba(3, 9, 22, 0.18) 0, transparent 28%),
+    var(--hero-top-filter),
+    linear-gradient(105deg, rgba(3, 9, 22, 0.3) 0, transparent 28%),
     radial-gradient(circle at 84% 22%, color-mix(in oklab, var(--accent-b) 20%, transparent) 0, transparent 28%),
     linear-gradient(180deg, rgba(5, 10, 24, 0.1) 0, rgba(5, 10, 24, 0.34) 100%);
-  mix-blend-mode: screen;
 }
 
 .cirion-hero__mesh {
