@@ -1,108 +1,150 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Playbook Operativo Churn | Cirion</title>
-  <meta name="description" content="Playbook interactivo de capacitación operativa para el proceso de desconexiones / churn." />
-  <style>
-    :root{--bg:#030713;--bg2:#071127;--panel:#0b1528;--card:#101d35;--ink:#f7fbff;--text:#d9e6ff;--muted:#93a8cc;--line:rgba(122,164,255,.22);--cyan:#00AEEF;--cyan2:#62d8ff;--mag:#e83e8c;--green:#2fe6a0;--yellow:#ffd35a;--red:#ff6b6b;--radius:22px;--font:Arial,Helvetica,sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;font-family:var(--font);color:var(--text);line-height:1.5;background:radial-gradient(circle at 88% 14%,rgba(0,174,239,.30),transparent 18rem),radial-gradient(circle at 95% 32%,rgba(232,62,140,.20),transparent 12rem),linear-gradient(135deg,#02030b 0%,#06102a 100%);min-height:100vh}a{color:var(--cyan2);text-decoration:none}.layout{display:grid;grid-template-columns:290px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 18px;border-right:1px solid var(--line);background:rgba(2,7,20,.86);backdrop-filter:blur(16px)}.brand{border-bottom:1px solid var(--line);padding:8px 8px 18px;margin-bottom:18px}.logo{font-size:32px;font-weight:800;color:#fff;letter-spacing:-2px}.logo span{color:var(--mag)}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}nav a{display:block;padding:10px 12px;border-radius:12px;color:#d6e5ff;font-size:13px;margin:2px 0;border:1px solid transparent}nav a:hover{border-color:rgba(0,174,239,.36);background:rgba(0,174,239,.08)}main{padding:30px 34px 70px;min-width:0}.page{max-width:1260px;margin:0 auto}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.pill{display:inline-flex;border:1px solid rgba(0,174,239,.42);background:rgba(0,174,239,.08);border-radius:999px;padding:8px 12px;color:#e0f7ff}.hero{position:relative;overflow:hidden;border:1px solid rgba(111,158,255,.24);border-radius:30px;padding:44px;min-height:390px;background:linear-gradient(90deg,rgba(2,6,15,.92),rgba(4,13,33,.86) 56%,rgba(6,26,70,.70)),radial-gradient(circle at 92% 45%,rgba(0,174,239,.42),transparent 16rem),radial-gradient(circle at 98% 48%,rgba(232,62,140,.30),transparent 10rem);box-shadow:0 26px 70px rgba(0,0,0,.36)}.hero:after{content:"";position:absolute;right:-6%;top:42%;width:48%;height:110px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),rgba(0,174,239,.35),rgba(232,62,140,.32),transparent);filter:blur(10px);transform:skewY(-8deg);opacity:.8}.kicker{color:var(--mag);font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:12px}h1{font-size:58px;line-height:.96;margin:0 0 18px;color:#fff;letter-spacing:-2.4px;max-width:820px;position:relative;z-index:1}.subtitle{position:relative;z-index:1;font-size:20px;color:#e2eeff;max-width:830px;margin:0 0 28px}.hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:2;margin-top:30px}.stat,.card,.callout,.gate,.term,.step,.role-card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(150deg,rgba(20,35,61,.90),rgba(7,14,31,.78));padding:18px}.stat b{display:block;font-size:24px;color:var(--cyan2);margin-bottom:6px}.stat span,.card p,.callout p,.gate p,.term p,.step p,.role-card p{color:#cbd9f5;font-size:13px;margin:0}.block{margin:22px 0;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(8,18,38,.80);box-shadow:0 18px 60px rgba(0,0,0,.18);backdrop-filter:blur(12px)}.section-meta{color:var(--mag);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:8px}.section-title{margin:0 0 14px;color:#fff;font-size:30px;letter-spacing:-.8px;line-height:1.08}.lead{font-size:17px;color:#d9e7ff;max-width:940px;margin:0 0 18px}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.tag{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#fff;background:rgba(232,62,140,.16);border:1px solid rgba(232,62,140,.46);padding:5px 8px;border-radius:999px;margin-bottom:10px}.card h3,.gate h3,.step h3,.role-card h3{margin:0 0 9px;color:#fff;font-size:18px}.card ul,.gate ul,.step ul,.role-card ul{margin:0;padding-left:18px}.card li,.gate li,.step li,.role-card li{margin:7px 0;color:#cbd9f5;font-size:13px}.rule{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:16px;background:rgba(255,255,255,.04);padding:14px 16px;margin:14px 0;color:#dbe8ff}.rule.warn{border-left-color:var(--yellow)}.rule.danger{border-left-color:var(--red)}.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}.tab{border:1px solid rgba(0,174,239,.42);background:rgba(0,174,239,.08);color:#e7f8ff;border-radius:999px;padding:10px 15px;font-family:var(--font);font-size:13px;cursor:pointer}.tab.active,.tab:hover{background:rgba(232,62,140,.18);border-color:rgba(232,62,140,.58);color:#fff}.panel{display:none}.panel.active{display:block}.diagram-wrap{position:relative;border:1px solid rgba(0,174,239,.54);border-radius:22px;padding:18px;background:rgba(0,0,0,.22);overflow:auto;margin:18px 0}.diagram-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;color:#cfe8ff;font-size:12px;text-transform:uppercase;letter-spacing:.12em}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid rgba(0,174,239,.44);background:rgba(0,174,239,.10);color:#def6ff;border-radius:999px;padding:8px 11px;font-family:var(--font);font-size:12px;cursor:pointer}.btn:hover{background:rgba(0,174,239,.20)}.mermaid{min-width:760px;background:transparent!important}.rendered svg{max-width:100%!important;height:auto!important;display:block}.diagram-caption{font-size:13px;color:#b6c9ea;margin-top:12px;border-left:3px solid var(--mag);padding-left:12px}table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(3,8,20,.38);margin:14px 0}th,td{padding:11px 12px;border-bottom:1px solid rgba(122,164,255,.14);vertical-align:top;font-size:13px}th{background:rgba(0,174,239,.13);color:#fff;text-align:left}.modal{display:none;position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.74);backdrop-filter:blur(10px);padding:24px}.modal.open{display:block}.modal-card{height:calc(100vh - 48px);border:1px solid rgba(0,174,239,.55);border-radius:24px;background:#061126;box-shadow:0 30px 90px rgba(0,0,0,.6);display:flex;flex-direction:column}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}.modal-title{color:#fff;font-weight:700}.modal-body{overflow:auto;padding:24px;flex:1}.modal-diagram{transform-origin:top left;display:inline-block;min-width:100%}.footer{color:var(--muted);font-size:12px;text-align:center;padding:30px 0 10px}@media(max-width:980px){.layout{display:block}aside{position:relative;width:100%;height:auto}.hero-grid,.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}main{padding:18px}h1{font-size:40px}.hero{padding:28px}}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b33">
+  <meta name="description" content="Playbook operativo del flujo de Desconexión Comercial solicitado por el cliente.">
+  <title>Playbook de Desconexión Comercial | Cirion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260716">
 </head>
 <body>
-<div class="layout">
-  <aside>
-    <div class="brand"><div class="logo">Cirion<span>.</span></div><small>Playbook operativo</small></div>
-    <nav>
-      <a href="#inicio">Inicio</a><a href="#principios">Principios</a><a href="#flujos">Flujos</a><a href="#training">Training por rol</a><a href="#gobierno">Gobierno operativo</a><a href="#troubleshooting">Troubleshooting</a><a href="#glosario">Glosario</a>
-    </nav>
-    <div class="rule"><b>Uso recomendado:</b><br>Entrar por flujo, validar el rol y usar gates/checklists para operar.</div>
-  </aside>
-  <main><div class="page">
-    <div class="topbar"><span>Nuevo proceso de desconexiones</span><button class="btn" onclick="window.print()">Imprimir / PDF</button></div>
-    <section class="hero" id="inicio">
-      <div class="kicker">Gestión de intención de desconexión</div>
-      <h1>Playbook Operativo de Churn</h1>
-      <p class="subtitle">Guía interactiva para operar, capacitar y gobernar desconexiones comerciales, internas y de Gobierno / Non-Renewable.</p>
-      <div class="hero-grid"><div class="stat"><b>3</b><span>flujos operativos diferenciados por origen.</span></div><div class="stat"><b>AM</b><span>owner de la decisión comercial.</span></div><div class="stat"><b>FA</b><span>owner de ETL validado, recálculos y excepciones.</span></div><div class="stat"><b>OM</b><span>ejecución operativa en Siebel.</span></div></div>
-    </section>
+  <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
 
-    <section class="block" id="principios"><div class="section-meta">01 | Principios</div><h2 class="section-title">Un proceso. Ownership definido. Gobierno E2E.</h2><p class="lead">El origen cambia; la disciplina de control se mantiene. El proceso exige trazabilidad, decisión documentada y ejecución controlada.</p><div class="grid-3"><div class="card"><span class="tag">Trazabilidad</span><h3>Origen explícito</h3><p>Una baja comercial no debe confundirse con una baja interna o una decisión de Gobierno.</p></div><div class="card"><span class="tag">Ownership</span><h3>Responsable por etapa</h3><p>AM decide, FA valida ETL, CSM clasifica causa raíz y OM ejecuta.</p></div><div class="card"><span class="tag">Gobierno</span><h3>Salesforce centraliza</h3><p>El Case permite controlar tareas, estados, escalaciones y decisiones.</p></div></div></section>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegación principal" data-i18n-aria="aria.mainNav">
+      <div class="brand">
+        <div class="brand-mark" aria-label="Cirion">ciri<span>o</span>n</div>
+        <div class="brand-product" data-i18n="brandProduct">Commercial Disconnection</div>
+        <div class="environment"><span aria-hidden="true"></span><span data-i18n="environment">Guía operativa</span></div>
+      </div>
 
-    <section class="block" id="flujos"><div class="section-meta">02 | Flujos</div><h2 class="section-title">Seleccioná el flujo operativo</h2><p class="lead">Cada flujo tiene su propio circuito, responsables, gates y errores comunes.</p><div class="tabs"><button class="tab active" data-tab="comercial">Comercial</button><button class="tab" data-tab="interno">Interno</button><button class="tab" data-tab="gobierno">Gobierno / Non-Renewable</button></div>
-      <div class="panel active" data-panel="comercial"><h2 class="section-title">Flujo Comercial</h2><p class="lead">Cliente inicia en Portal, Siebel crea/consolida la orden, Salesforce gobierna el Case, AM decide, FA valida ETL, CSM clasifica Root Cause si avanza y OM ejecuta en Siebel.</p><div class="diagram-wrap"><div class="diagram-title"><span>E2E Comercial</span><div class="actions"><button class="btn copy">Copiar Mermaid</button><button class="btn expand">Ampliar</button></div></div><pre class="mermaid">flowchart LR
-A[Portal Cliente\nSolicitud + motivo + ETL estimado] --> B[Siebel\nOrden operativa]
-B --> C[Salesforce Case\nOwnership y trazabilidad]
-C --> D[AM\nContacto + retención + decisión]
-C --> E[FA\nETL validado / recálculo / excepción]
-D --> F{Decisión AM}
-E --> F
-F -->|Retenido| G[Complete Cancelled\nOrden cancelada]
-F -->|Avanza baja| H[Complete Progress]
-F -->|Rechaza ETL| I[ETL Exception]
-I --> J{Aprobación}
-J -->|Aprobada| K[Closed without ETL]
-J -->|Rechazada| L[Closed with ETL + Invoice]
-H --> M[CSM\nRoot Cause]
-H --> N[OM / Siebel\nEjecución]
-N --> O[Cierre operativo]</pre><div class="diagram-caption">El cliente inicia la intención; Salesforce gobierna decisiones y Siebel/OM ejecuta la orden operativa.</div></div><div class="grid-3"><div class="step"><h3>1. Portal</h3><ul><li>Selecciona servicios activos.</li><li>Captura causal y contacto.</li><li>Muestra ETL estimado no vinculante.</li></ul></div><div class="step"><h3>2. Salesforce Case</h3><ul><li>Asigna owner AM.</li><li>Crea tareas automáticas.</li><li>Controla estados y escalaciones.</li></ul></div><div class="step"><h3>3. Decisión</h3><ul><li>Complete Cancelled.</li><li>Complete Progress.</li><li>ETL Exception.</li></ul></div></div><div class="grid-3"><div class="gate"><h3>Gate: Complete Progress</h3><ul><li>Contacto o intento documentado.</li><li>Billing Effective Ending Date.</li><li>Close Comments.</li><li>ETL validado si aplica.</li></ul></div><div class="gate"><h3>Gate: ETL Exception</h3><ul><li>ETL Amount validado.</li><li>Justificación comercial.</li><li>Evidencia o soporte.</li><li>Aprobador según monto.</li></ul></div><div class="gate"><h3>Gate: OM ejecuta</h3><ul><li>Case en Complete Progress.</li><li>Status habilitante en Siebel.</li><li>Fecha efectiva confirmada.</li><li>SLA operativo 72 horas.</li></ul></div></div><div class="rule danger"><b>Errores a evitar:</b> prometer ETL estimado como definitivo, cerrar sin comentarios, pedir Root Cause antes de Complete Progress o asumir que Salesforce ejecuta la baja.</div></div>
-      <div class="panel" data-panel="interno"><h2 class="section-title">Flujo Interno</h2><p class="lead">CSM o usuario interno autorizado registra una intención de baja por causal interna. La ejecución sólo avanza luego de aprobación del Head CSM o aprobador designado.</p><div class="diagram-wrap"><div class="diagram-title"><span>E2E Interno</span><div class="actions"><button class="btn copy">Copiar Mermaid</button><button class="btn expand">Ampliar</button></div></div><pre class="mermaid">flowchart LR
-A[CSM / Usuario autorizado\nIdentifica necesidad interna] --> B[Portal Interno\nRegistra causal + fecha + justificación]
-B --> C[Solicitud REQ\nTrazabilidad y evidencias]
-C --> D[Head CSM / Aprobador\nSLA 2 días]
-D -->|Aprueba| E[Siebel\nGenera / procesa orden]
-D -->|Rechaza| F[Solicitud detenida\nRegistro para auditoría]
-E --> G[Delivery / OM\nEjecuta baja]
-G --> H[Cierre operativo]</pre><div class="diagram-caption">Una solicitud interna no ejecuta la baja inmediatamente: requiere aprobación formal antes de Siebel/OM.</div></div><div class="grid-3"><div class="gate"><h3>Datos obligatorios</h3><ul><li>Servicio.</li><li>Causal interna.</li><li>Fecha solicitada.</li><li>Comentarios y justificación.</li></ul></div><div class="gate"><h3>Gobierno</h3><ul><li>Estado de solicitud.</li><li>Solicitante.</li><li>Historial de decisiones.</li><li>Comentarios de aprobación/rechazo.</li></ul></div><div class="gate"><h3>Errores comunes</h3><ul><li>Registrar como solicitud del cliente.</li><li>Ejecutar sin aprobación.</li><li>No documentar causal.</li><li>Confundir fecha solicitada con ejecución real.</li></ul></div></div></div>
-      <div class="panel" data-panel="gobierno"><h2 class="section-title">Flujo Gobierno / Non-Renewable</h2><p class="lead">DWH identifica servicios próximos a vencer, el sistema publica candidatos y el AM mantiene ownership de la decisión comercial: continuidad o baja.</p><div class="diagram-wrap"><div class="diagram-title"><span>E2E Gobierno</span><div class="actions"><button class="btn copy">Copiar Mermaid</button><button class="btn expand">Ampliar</button></div></div><pre class="mermaid">flowchart LR
-A[DWH\nDetecta vencimientos 30 días antes] --> B[Mulesoft / Sistema\nPublica en Portal Dashboard]
-B --> C[AM\nEvalúa continuidad o baja]
-C --> D{Decisión comercial\nSLA 7 días}
-D -->|Continúa baja| E[Siebel\nGenera / procesa orden]
-D -->|Renovación / extensión / cancelación| F[Registro de continuidad contractual]
-E --> G[OM / Order Desk\nEjecución operativa]
-G --> H[Cierre]
-D -->|Sin decisión| I[Escalamiento\nAM → Head AM → CSM informado]</pre><div class="diagram-caption">El AM mantiene ownership de la decisión. CSM participa como apoyo o escalamiento, no como owner inicial.</div></div><div class="grid-3"><div class="gate"><h3>Reglas</h3><ul><li>Detección 30 días antes.</li><li>AM decide en 7 días.</li><li>CSM informado/apoyo.</li><li>Portal centraliza estado y evidencia.</li></ul></div><div class="gate"><h3>Quality gates</h3><ul><li>Identificador único.</li><li>Estado de aprobación.</li><li>Responsable asignado.</li><li>Comentarios e historial.</li></ul></div><div class="gate"><h3>Errores comunes</h3><ul><li>Tratarlo como baja comercial.</li><li>No registrar decisión.</li><li>Confundir renovación con non-renewal.</li><li>Escalar al CSM como owner inicial.</li></ul></div></div></div>
-    </section>
+      <nav class="nav" id="nav" aria-label="Secciones del playbook" data-i18n-aria="aria.sections">
+        <a href="#inicio" data-section="inicio"><span class="nav-index">01</span><span data-i18n="nav.home">Inicio</span></a>
+        <a href="#flujo" data-section="flujo"><span class="nav-index">02</span><span data-i18n="nav.flow">Flujo E2E</span></a>
+        <a href="#decisiones" data-section="decisiones"><span class="nav-index">03</span><span data-i18n="nav.decisions">Decisiones</span></a>
+        <a href="#roles" data-section="roles"><span class="nav-index">04</span><span data-i18n="nav.roles">Roles</span></a>
+        <a href="#controles" data-section="controles"><span class="nav-index">05</span><span data-i18n="nav.controls">Controles</span></a>
+        <a href="#ayuda" data-section="ayuda"><span class="nav-index">06</span><span data-i18n="nav.help">Troubleshooting</span></a>
+        <a href="#glosario" data-section="glosario"><span class="nav-index">07</span><span data-i18n="nav.glossary">Glosario</span></a>
+      </nav>
 
-    <section class="block" id="training"><div class="section-meta">03 | Training por rol</div><h2 class="section-title">Qué debe hacer cada equipo</h2><div class="tabs"><button class="tab active" data-tab="am">AM</button><button class="tab" data-tab="fa">Financial Assurance</button><button class="tab" data-tab="csm">CSM / CCM</button><button class="tab" data-tab="om">OM / Order Desk</button></div><div class="panel active" data-panel="am"><div class="role-card"><h3>Account Manager</h3><ul><li>Owner de contacto, retención y decisión comercial.</li><li>Completa Retention Action Plan, Resolution Status, Billing Effective Ending Date y Close Comments.</li><li>Comunica ETL validado al cliente, pero no lo calcula ni modifica.</li></ul></div></div><div class="panel" data-panel="fa"><div class="role-card"><h3>Financial Assurance</h3><ul><li>Calcula ETL Amount real.</li><li>Gestiona recálculos, soporte, comentarios e invoice si corresponde.</li><li>La task ETL se genera automáticamente al crearse el Case.</li></ul></div></div><div class="panel" data-panel="csm"><div class="role-card"><h3>CSM / CCM</h3><ul><li>Clasifica Root Cause sólo tras Complete Progress.</li><li>Completa Key Category y Sub Reason.</li><li>En flujo interno puede iniciar solicitud y documentar causal.</li></ul></div></div><div class="panel" data-panel="om"><div class="role-card"><h3>OM / Order Desk</h3><ul><li>Ejecuta baja en Siebel cuando el Case está habilitado.</li><li>Respeta Billing Effective Ending Date.</li><li>Valida status habilitante y SLA operativo de 72 horas.</li></ul></div></div></section>
+      <div class="sidebar-footer">
+        <a class="sim-link" href="https://cirion-churn-flow-simulator.vercel.app/" target="_blank" rel="noopener">
+          <span data-i18n="openSimulator">Abrir simulador</span><span aria-hidden="true">↗</span>
+        </a>
+        <p data-i18n="sidebarNote">Material de capacitación. Datos ficticios.</p>
+      </div>
+    </aside>
 
-    <section class="block" id="gobierno"><div class="section-meta">04 | Gobierno operativo</div><h2 class="section-title">Cómo se gobierna un Case sin progreso</h2><p class="lead">Salesforce controla la evolución del Case durante la ventana de gestión para evitar casos estancados sin contacto, ETL, decisión o cierre.</p><div class="diagram-wrap"><div class="diagram-title"><span>Escalamiento del Case</span><div class="actions"><button class="btn copy">Copiar Mermaid</button><button class="btn expand">Ampliar</button></div></div><pre class="mermaid">timeline
-title Controles de progreso y cierre
-Día 3 : Recordatorio al AM : Falta de gestión inicial o actualización
-Día 7 : Escalamiento al Manager : Caso sin progreso registrado
-Día 10 : Escalamiento al Director : Persisten bloqueos relevantes
-Día 20 : Vencimiento de ventana máxima : Visibilidad ejecutiva y acción correctiva</pre><div class="diagram-caption">El escalamiento no reemplaza la responsabilidad del owner; existe para destrabar el proceso.</div></div><table><tr><th>Hito</th><th>Qué detecta</th><th>Acción esperada</th></tr><tr><td>Día 3</td><td>Sin gestión inicial</td><td>Recordatorio al AM</td></tr><tr><td>Día 7</td><td>Sin progreso</td><td>Escalamiento a Manager</td></tr><tr><td>Día 10</td><td>Bloqueo persistente</td><td>Escalamiento a Director</td></tr><tr><td>Día 20</td><td>Vencimiento de ventana</td><td>Acción correctiva</td></tr></table><div class="rule warn"><b>Sin progreso incluye ausencia de:</b> contacto con cliente, Retention Action Plan, ETL validado o solicitado, cambio de estado, comentarios relevantes o Billing Effective Ending Date cuando aplica.</div></section>
+    <div class="workspace">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir navegación" data-i18n-aria="aria.openNav">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="breadcrumb"><span data-i18n="breadcrumb">Playbook operativo</span><strong id="currentSection">Inicio</strong></div>
+        <div class="topbar-actions">
+          <span class="scope-badge" data-i18n="scopeBadge">Solo flujo Comercial</span>
+          <div class="language-switcher" role="group" aria-label="Idioma" data-i18n-aria="aria.language">
+            <button type="button" data-lang="es" aria-pressed="true">ES</button>
+            <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+        </div>
+      </header>
 
-    <section class="block" id="troubleshooting"><div class="section-meta">05 | Troubleshooting</div><h2 class="section-title">Qué hacer cuando el flujo se traba</h2><div class="diagram-wrap"><div class="diagram-title"><span>Árbol de diagnóstico</span><div class="actions"><button class="btn copy">Copiar Mermaid</button><button class="btn expand">Ampliar</button></div></div><pre class="mermaid">flowchart TD
-A[Problema reportado] --> B{¿Dónde se detecta?}
-B -->|Portal| C{¿Cliente pudo confirmar?}
-C -->|No| D[Solicitar cuenta, servicio, timestamp y captura]
-D --> E[Escalar a IT Portal]
-C -->|Sí| F[Buscar orden / Case]
-B -->|Salesforce| G{¿Existe Case?}
-G -->|No| H[Buscar por cuenta, orden, cliente y fecha]
-H --> I[Escalar integración Siebel → Salesforce]
-G -->|Sí| J{¿Tiene owner y tareas?}
-J -->|No| K[Operaciones reasigna o crea tarea]
-J -->|Sí| L{¿Dónde está trabado?}
-L -->|AM| M[Actualizar contacto o decisión]
-L -->|FA| N[Completar ETL / recálculo]
-L -->|Aprobación| O[Revisar aprobador]
-L -->|OM| P[Validar status y fecha efectiva]</pre><div class="diagram-caption">Separar siempre falla técnica, dato incompleto y bloqueo operativo.</div></div></section>
+      <div class="sandbox-banner" role="note">
+        <span aria-hidden="true">i</span>
+        <p data-i18n="sandbox">Guía de capacitación. El simulador utiliza datos ficticios y no actualiza sistemas productivos.</p>
+      </div>
 
-    <section class="block" id="glosario"><div class="section-meta">06 | Glosario</div><h2 class="section-title">Términos operativos</h2><div class="grid-3"><div class="term"><b>ETL estimado</b><p>Valor preventivo y no vinculante mostrado en Portal.</p></div><div class="term"><b>ETL Amount</b><p>Valor validado por Financial Assurance en Salesforce.</p></div><div class="term"><b>Complete Cancelled</b><p>Cierre por retención o cancelación de avance de baja.</p></div><div class="term"><b>Complete Progress</b><p>Decisión AM de avanzar con la desconexión.</p></div><div class="term"><b>Billing Effective Ending Date</b><p>Fecha efectiva que OM debe respetar.</p></div><div class="term"><b>Status habilitante</b><p>Estado de orden en Siebel que permite ejecución.</p></div></div></section>
-    <div class="footer">©2026 Cirion Technologies · Playbook interactivo de capacitación operativa · Publicado en GitHub Pages</div>
-  </div></main>
-</div>
-<div class="modal" id="modal"><div class="modal-card"><div class="modal-head"><div class="modal-title" id="modalTitle">Diagrama ampliado</div><div><button class="btn" data-zoom="1">100%</button><button class="btn" data-zoom="1.25">125%</button><button class="btn" data-zoom="1.5">150%</button><button class="btn" id="modalCopy">Copiar Mermaid</button><button class="btn" id="modalClose">Cerrar</button></div></div><div class="modal-body"><div class="modal-diagram" id="modalDiagram"></div></div></div></div>
-<script type="module">
-import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-mermaid.initialize({startOnLoad:false,securityLevel:'loose',theme:'base',themeVariables:{background:'transparent',primaryColor:'#12213a',primaryTextColor:'#f7fbff',primaryBorderColor:'#00AEEF',lineColor:'#62d8ff',secondaryColor:'#1a2d52',tertiaryColor:'#0b1528',clusterBkg:'#071127',clusterBorder:'#3d70ff',edgeLabelBackground:'#030713',fontFamily:'Arial, Helvetica, sans-serif',fontSize:'15px'}});
-let counter=0;function esc(s){return String(s).replace(/[&<>]/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[x]))}async function render(){for(const pre of document.querySelectorAll('pre.mermaid')){const src=pre.textContent.trim();pre.dataset.source=src;pre.style.display='none';const d=document.createElement('div');d.className='rendered';pre.after(d);try{const r=await mermaid.render('m'+(++counter),src);d.innerHTML=r.svg}catch(e){d.innerHTML='<pre style="color:#ffd6d6;white-space:pre-wrap">No se pudo renderizar\n'+esc(e.message||e)+'\n\n'+esc(src)+'</pre>'}}}await render();
-function source(btn){return btn.closest('.diagram-wrap')?.querySelector('pre.mermaid')?.dataset.source||''}async function copy(src,btn){try{await navigator.clipboard.writeText('```mermaid\n'+src+'\n```');const old=btn.textContent;btn.textContent='Copiado';setTimeout(()=>btn.textContent=old,1000)}catch(e){alert('No pude copiar automáticamente.')}}document.querySelectorAll('.copy').forEach(b=>b.onclick=()=>copy(source(b),b));
-const modal=document.getElementById('modal'),md=document.getElementById('modalDiagram'),mt=document.getElementById('modalTitle');let current='';document.querySelectorAll('.expand').forEach(b=>b.onclick=()=>{const w=b.closest('.diagram-wrap');current=source(b);mt.textContent=w.querySelector('.diagram-title span').textContent;const svg=w.querySelector('.rendered svg');md.style.transform='scale(1)';md.innerHTML=svg?svg.outerHTML:'<pre>'+esc(current)+'</pre>';modal.classList.add('open')});document.getElementById('modalCopy').onclick=()=>copy(current,document.getElementById('modalCopy'));document.querySelectorAll('[data-zoom]').forEach(b=>b.onclick=()=>md.style.transform='scale('+b.dataset.zoom+')');document.getElementById('modalClose').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{const parent=t.closest('.block');parent.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));parent.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===t.dataset.tab));});
-</script>
+      <main id="main">
+        <section class="hero section" id="inicio" data-title-key="nav.home">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="hero.eyebrow">PLAYBOOK OPERATIVO · FLUJO COMERCIAL</p>
+            <h1 data-i18n="hero.title">Desconexión Comercial, de punta a punta</h1>
+            <p class="hero-lead" data-i18n="hero.lead">Una guía para operar la solicitud iniciada por el cliente desde el Portal hasta el cierre controlado en Salesforce y la ejecución de OM en Siebel.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#flujo"><span data-i18n="hero.primary">Recorrer el flujo</span><span aria-hidden="true">↓</span></a>
+              <a class="button secondary" href="https://cirion-churn-flow-simulator.vercel.app/" target="_blank" rel="noopener"><span data-i18n="hero.secondary">Practicar en el simulador</span><span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="case-snapshot" aria-label="Resumen del flujo" data-i18n-aria="aria.summary">
+            <div class="snapshot-head"><span data-i18n="snapshot.label">ALCANCE DEL PROCESO</span><span class="status-dot" data-i18n="snapshot.status">Vigente</span></div>
+            <dl id="snapshotList"></dl>
+          </div>
+        </section>
+
+        <section class="section content-section" id="flujo" data-title-key="nav.flow">
+          <div class="section-heading">
+            <div><p class="section-number">02</p><h2 data-i18n="flow.title">El recorrido operativo</h2></div>
+            <p data-i18n="flow.intro">Cada etapa tiene un responsable, una salida verificable y un siguiente paso. Salesforce centraliza la gestión; Siebel soporta la orden y su ejecución.</p>
+          </div>
+          <div class="journey" id="journey" aria-label="Etapas del flujo Comercial" data-i18n-aria="aria.stages"></div>
+          <div class="flow-legend" id="flowLegend"></div>
+        </section>
+
+        <section class="section content-section" id="decisiones" data-title-key="nav.decisions">
+          <div class="section-heading">
+            <div><p class="section-number">03</p><h2 data-i18n="decisions.title">Una decisión, dos resultados controlados</h2></div>
+            <p data-i18n="decisions.intro">Después del cálculo operativo de ETL, la respuesta del cliente determina la rama. Ningún cierre debe ocultar actividades pendientes.</p>
+          </div>
+          <div class="decision-map" id="decisionMap"></div>
+        </section>
+
+        <section class="section content-section" id="roles" data-title-key="nav.roles">
+          <div class="section-heading">
+            <div><p class="section-number">04</p><h2 data-i18n="roles.title">Ownership por etapa</h2></div>
+            <p data-i18n="roles.intro">El proceso avanza cuando cada equipo completa su responsabilidad y deja evidencia para el siguiente.</p>
+          </div>
+          <div class="role-tabs" id="roleTabs" role="tablist" aria-label="Roles del proceso" data-i18n-aria="aria.roles"></div>
+          <div class="role-panel" id="rolePanel" role="tabpanel" tabindex="0"></div>
+        </section>
+
+        <section class="section content-section" id="controles" data-title-key="nav.controls">
+          <div class="section-heading">
+            <div><p class="section-number">05</p><h2 data-i18n="controls.title">Controles que no se negocian</h2></div>
+            <p data-i18n="controls.intro">Use esta lista antes de mover el Case, aprobar una excepción o confirmar el cierre.</p>
+          </div>
+          <div class="controls-layout">
+            <div class="checklist" id="controlList"></div>
+            <aside class="control-callout">
+              <span class="callout-label" data-i18n="controls.calloutLabel">REGLA DE ORO</span>
+              <blockquote data-i18n="controls.callout">El valor mostrado en el Portal es una estimación no vinculante. Financial Assurance calcula el ETL operativo.</blockquote>
+              <div class="system-chain" aria-label="Cadena de sistemas" data-i18n-aria="aria.systems"><span>Portal</span><i>→</i><span>Salesforce</span><i>→</i><span>Siebel</span></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section content-section" id="ayuda" data-title-key="nav.help">
+          <div class="section-heading">
+            <div><p class="section-number">06</p><h2 data-i18n="help.title">Cuando el flujo se detiene</h2></div>
+            <p data-i18n="help.intro">Identifique el síntoma, valide la evidencia y devuelva la acción al owner correcto.</p>
+          </div>
+          <div class="troubleshooting" id="troubleshooting"></div>
+        </section>
+
+        <section class="section content-section" id="glosario" data-title-key="nav.glossary">
+          <div class="section-heading">
+            <div><p class="section-number">07</p><h2 data-i18n="glossary.title">Lenguaje común</h2></div>
+            <p data-i18n="glossary.intro">Definiciones breves para mantener consistencia entre equipos y sistemas.</p>
+          </div>
+          <div class="glossary" id="glossaryList"></div>
+          <div class="closing-panel">
+            <div><span data-i18n="closing.kicker">LISTO PARA PRACTICAR</span><h3 data-i18n="closing.title">Complete el recorrido en el entorno de capacitación</h3><p data-i18n="closing.body">Pruebe la aceptación de ETL y la ruta de excepción con datos completamente ficticios.</p></div>
+            <a class="button light" href="https://cirion-churn-flow-simulator.vercel.app/" target="_blank" rel="noopener"><span data-i18n="openSimulator">Abrir simulador</span><span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+      </main>
+
+      <footer><span>Cirion Technologies</span><span data-i18n="footer">Commercial Disconnection · Playbook de capacitación</span></footer>
+    </div>
+  </div>
+
+  <div class="sidebar-scrim" id="sidebarScrim" hidden></div>
+  <script src="app.js?v=20260716"></script>
 </body>
 </html>
